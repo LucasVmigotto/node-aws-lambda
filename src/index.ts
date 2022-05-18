@@ -12,8 +12,11 @@ import {
   json,
   urlencoded
 } from 'express'
-import { handler } from './app'
 import config from './confg'
+import createContext from './context'
+import { handler } from './app'
+
+const { logger } = createContext(config)
 
 const app = express()
 app.use(json())
@@ -49,16 +52,23 @@ const close: any = async () => {
     return
   }
   close.closed = true
-  console.log('Closing server...')
+  logger.info('Closing server...')
   await Promise.resolve((resolve: any) => server.close(resolve))
-  console.log('Server closed')
+  logger.info('Server closed')
   process.exit()
 }
 
 server.on('close', close)
+server.on('error', (err: any) => {
+  logger.log(err)
+  logger.error(err)
+  if (err.code === 'EADDRINUSE') {
+    close()
+  }
+})
 server.listen(
   { host: config.API_HOST, port: config.API_PORT },
-  () => { console.log(`Server ready at http://${config.API_HOST}:${config.API_PORT}`) }
+  () => { logger.info(`Server ready at http://${config.API_HOST}:${config.API_PORT}`) }
 )
 
 process.on('SIGTERM', close)
