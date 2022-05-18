@@ -1,7 +1,8 @@
 import { APIGatewayProxyHandler } from 'aws-lambda'
+import { inverse } from './utils'
 
 export const handler: APIGatewayProxyHandler = (event, _context, callback) => {
-  const name: string | null = event.body ? JSON.parse(event.body).name : null
+  const name: string | null = event.body ? inverse(JSON.parse(event.body).name) : null
   callback(
     null,
     {
