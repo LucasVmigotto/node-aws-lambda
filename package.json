@@ -1,0 +1,33 @@
+{
+    "name": "node-aws-lambda",
+    "version": "0.0.0",
+    "description": "Test with Node API as AWS Lambda function",
+    "main": "src/app.ts",
+    "author": {
+        "name": "Lucas Vidor Migotto",
+        "email": "lvmigotto1@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "it@github.com:LucasVmigotto/node-aws-lambda.git"
+    },
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.1137.0",
+        "express": "^4.18.1",
+        "ts-node": "^10.7.0",
+        "typescript": "^4.6.4",
+        "winston": "^3.7.2"
+    },
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.97",
+        "@types/express": "^4.17.13",
+        "@types/node": "^17.0.34",
+        "@types/winston": "^2.4.4",
+        "nodemon": "^2.0.16"
+  }
+}
