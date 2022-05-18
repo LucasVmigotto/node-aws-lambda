@@ -14,10 +14,12 @@
     "license": "MIT",
     "private": false,
     "scripts": {
+        "start:dev": "nodemon -r dotenv/config --exec 'ts-node src/index.ts'",
         "build": "tsc"
     },
     "dependencies": {
         "aws-sdk": "^2.1137.0",
+        "dotenv": "^16.0.1",
         "express": "^4.18.1",
         "ts-node": "^10.7.0",
         "typescript": "^4.6.4",
@@ -29,5 +31,5 @@
         "@types/node": "^17.0.34",
         "@types/winston": "^2.4.4",
         "nodemon": "^2.0.16"
-  }
+    }
 }
