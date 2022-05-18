@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM public.ecr.aws/lambda/nodejs:16
 
-COPY ./dist/app.js ./package.json ${LAMBDA_TASK_ROOT}
+COPY ./dist ./package.json ${LAMBDA_TASK_ROOT}
 
 RUN npm install
 
